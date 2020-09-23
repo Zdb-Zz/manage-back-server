@@ -27,6 +27,7 @@ public class TravelController {
 
     /**
      * 获取话题列表
+     *
      * @param pageIndex
      * @param pageSize
      * @param username
@@ -36,27 +37,27 @@ public class TravelController {
      * @return
      */
     @GetMapping("/getTravelList")
-    public Map<String,Object> getTravelList(@RequestParam(value = "pageIndex",defaultValue = "1") Integer pageIndex,
-                                          @RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize,
-                                          @RequestParam(value = "username",required = false) String username,
-                                          @RequestParam(value = "location",required = false) String location,
-                                          @RequestParam(value = "startTime",required = false) String startTime,
-                                          @RequestParam(value = "endTime",required = false) String endTime
-    ){
-        Page<Travels> Travels = travelService.getTravelList(pageIndex,pageSize,username,location,startTime,endTime);
-        if(Travels!=null && Travels.size()>0){
-            return ResultUtil.listResult(Travels.getPageNum(),Travels.getPageSize(), (int) Travels.getTotal(),Travels.getResult());
-        }else{
+    public Map<String, Object> getTravelList(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
+                                             @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
+                                             @RequestParam(value = "username", required = false) String username,
+                                             @RequestParam(value = "location", required = false) String location,
+                                             @RequestParam(value = "startTime", required = false) String startTime,
+                                             @RequestParam(value = "endTime", required = false) String endTime
+    ) {
+        Page<Travels> Travels = travelService.getTravelList(pageIndex, pageSize, username, location, startTime, endTime);
+        if (Travels != null && Travels.size() > 0) {
+            return ResultUtil.listResult(Travels.getPageNum(), Travels.getPageSize(), (int) Travels.getTotal(), Travels.getResult());
+        } else {
             return ResultUtil.resultFail("获取话题列表失败", null, null);
         }
     }
 
     @GetMapping("/delTravel")
-    public Map<String,Object> delTravel(@RequestParam(value = "answerId",required = false) Integer answerId){
-       Boolean isSuccess = travelService.deleteTravel(answerId);
-        if(isSuccess){
+    public Map<String, Object> delTravel(@RequestParam(value = "answerId", required = false) Integer answerId) {
+        Boolean isSuccess = travelService.deleteTravel(answerId);
+        if (isSuccess) {
             return ResultUtil.resultSuccess("删除游记列表成功", null, null);
-        }else{
+        } else {
             return ResultUtil.resultFail("删除游记列表失败", null, null);
         }
     }

@@ -25,21 +25,23 @@ public class UserController {
 
     /**
      * 登录
+     *
      * @param user
      * @return
      */
     @PostMapping("/login")
-    public Map<String,Object> login(@RequestBody User user){
+    public Map<String, Object> login(@RequestBody User user) {
         User myUser = userService.findByUid(user.getUid());
-        if(myUser!=null && user.getPassword().equals(myUser.getPassword())){
+        if (myUser != null && user.getPassword().equals(myUser.getPassword())) {
             return ResultUtil.resultSuccess("注册成功", null, myUser);
-        }else{
+        } else {
             return ResultUtil.resultFail("注册失败", null, null);
         }
     }
 
     /**
      * 获取用户列表
+     *
      * @param pageIndex
      * @param pageSize
      * @param sex
@@ -47,45 +49,47 @@ public class UserController {
      * @return
      */
     @GetMapping("/getUserList")
-    public Map<String,Object> getUserList(@RequestParam(value = "pageIndex",defaultValue = "1") Integer pageIndex,
-                                          @RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize,
-                                          @RequestParam(value = "sex",required = false) Integer sex,
-                                          @RequestParam(value = "username",required = false) String  username
-                                          ){
-        Page<User> users = userService.getUserList(pageIndex,pageSize,sex,username);
-        if(users!=null && users.size()>0){
-            return ResultUtil.listResult(users.getPageNum(),users.getPageSize(), (int) users.getTotal(),users.getResult());
-        }else{
+    public Map<String, Object> getUserList(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
+                                           @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
+                                           @RequestParam(value = "sex", required = false) Integer sex,
+                                           @RequestParam(value = "username", required = false) String username
+    ) {
+        Page<User> users = userService.getUserList(pageIndex, pageSize, sex, username);
+        if (users != null && users.size() > 0) {
+            return ResultUtil.listResult(users.getPageNum(), users.getPageSize(), (int) users.getTotal(), users.getResult());
+        } else {
             return ResultUtil.resultFail("获取列表失败", null, null);
         }
     }
 
     /**
      * 更新用户信息
+     *
      * @param user
      * @return
      */
     @PostMapping("/updateUser")
-    public Map<String,Object> updateUser(@RequestBody User user){
+    public Map<String, Object> updateUser(@RequestBody User user) {
         Boolean isSuccess = userService.updateUser(user);
-        if(isSuccess){
+        if (isSuccess) {
             return ResultUtil.resultSuccess("修改成功", null, null);
-        }else{
+        } else {
             return ResultUtil.resultFail("修改成功", null, null);
         }
     }
 
     /**
      * 删除用户信息
+     *
      * @param userId
      * @return
      */
     @GetMapping("/deleteUser")
-    public Map<String,Object> deleteUser(@RequestParam("userId") Integer userId){
+    public Map<String, Object> deleteUser(@RequestParam("userId") Integer userId) {
         Boolean isSuccess = userService.deleteUser(userId);
-        if(isSuccess){
+        if (isSuccess) {
             return ResultUtil.resultSuccess("删除成功", null, null);
-        }else{
+        } else {
             return ResultUtil.resultFail("删除失败", null, null);
         }
     }

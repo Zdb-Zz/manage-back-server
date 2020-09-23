@@ -8,6 +8,7 @@ import java.util.List;
 public interface UserService {
     /**
      * 根据用户名获取用户所有信息
+     *
      * @param uid
      * @return
      */
@@ -15,6 +16,7 @@ public interface UserService {
 
     /**
      * 分页查询用户列表
+     *
      * @param pageIndex
      * @param pageSize
      * @param sex
@@ -25,6 +27,7 @@ public interface UserService {
 
     /**
      * 更新用户信息
+     *
      * @param user
      * @return
      */
@@ -32,6 +35,7 @@ public interface UserService {
 
     /**
      * 删除用户
+     *
      * @param userId
      * @return
      */

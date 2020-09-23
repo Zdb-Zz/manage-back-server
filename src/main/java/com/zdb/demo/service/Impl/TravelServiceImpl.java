@@ -43,14 +43,14 @@ public class TravelServiceImpl implements TravelService {
         if (userIdList != null && userIdList.size() > 0) {
             criteria1.andUserIdIn(userIdList);
         }
-        if (location != null && !location.equals("") ) {
+        if (location != null && !location.equals("")) {
             criteria1.andLocationLike(location);
         }
-        if (startTime != null && !startTime.equals("") && endTime != null && !endTime .equals("")) {
+        if (startTime != null && !startTime.equals("") && endTime != null && !endTime.equals("")) {
             criteria1.andCreatetimeBetween(DateUtilJava8.StringToDate(startTime), DateUtilJava8.StringToDate(endTime));
         }
         String orderBy = "createTime desc";
-        PageHelper.startPage(pageIndex, pageSize,orderBy);
+        PageHelper.startPage(pageIndex, pageSize, orderBy);
         Page<Travels> travels = (Page<Travels>) travelsMapper.selectByExample(travelsExample);
         for (Travels travel : travels) {
             travel.setUserName(userMapper.selectByPrimaryKey(travel.getUserId()).getUsername());

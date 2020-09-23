@@ -10,7 +10,10 @@ public interface TravelService {
      * 获取游记列表
      * @param pageIndex
      * @param pageSize
-     * @param userId
+     * @param username
+     * @param location
+     * @param startTime
+     * @param endTime
      * @return
      */
     Page<Travels> getTravelList(Integer pageIndex, Integer pageSize, String username, String location, String startTime, String endTime);

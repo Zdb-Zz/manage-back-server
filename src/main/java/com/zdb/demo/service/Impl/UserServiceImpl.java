@@ -25,10 +25,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<User> getUserList(Integer pageIndex, Integer pageSize,Integer sex,String username) {
-        Map<String,Object> map=new HashMap<>();
-        map.put("username",username);
-        map.put("sex",sex);
+    public Page<User> getUserList(Integer pageIndex, Integer pageSize, Integer sex, String username) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("username", username);
+        map.put("sex", sex);
         Page page = PageHelper.startPage(pageIndex, pageSize);
         Page<User> users = (Page<User>) userMapper.getUserList(map);
         return users;
@@ -36,12 +36,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean updateUser(User user) {
-        return 1==userMapper.updateByPrimaryKeySelective(user);
+        return 1 == userMapper.updateByPrimaryKeySelective(user);
     }
 
     @Override
     public Boolean deleteUser(Integer userId) {
-        return 1==userMapper.deleteByPrimaryKey(userId);
+        return 1 == userMapper.deleteByPrimaryKey(userId);
     }
 
 }
