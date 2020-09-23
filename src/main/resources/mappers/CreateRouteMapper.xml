@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdb.demo.mapper.CreateRouteMapper">
+    <resultMap id="BaseResultMap" type="com.zdb.demo.entity.CreateRoute">
+        <!--
+        @mbggenerated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="choose_city" jdbcType="VARCHAR" property="chooseCity" />
+        <result column="route_name" jdbcType="VARCHAR" property="routeName" />
+        <result column="expected_duration" jdbcType="VARCHAR" property="expectedDuration" />
+        <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="add_cityid" jdbcType="VARCHAR" property="addCityid" />
+        <result column="backgroundUrl" jdbcType="VARCHAR" property="backgroundurl" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+        @mbggenerated
+        -->
+        id, choose_city, route_name, expected_duration, remarks, user_id, add_cityid, backgroundUrl
+    </sql>
+    <select id="selectByExample" parameterType="com.zdb.demo.entity.CreateRouteExample" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from create_route
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0">
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from create_route
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        delete from create_route
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.zdb.demo.entity.CreateRouteExample">
+        <!--
+        @mbggenerated
+        -->
+        delete from create_route
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.zdb.demo.entity.CreateRoute">
+        <!--
+        @mbggenerated
+        -->
+        insert into create_route (id, choose_city, route_name, 
+            expected_duration, remarks, user_id, 
+            add_cityid, backgroundUrl)
+        values (#{id,jdbcType=INTEGER}, #{chooseCity,jdbcType=VARCHAR}, #{routeName,jdbcType=VARCHAR}, 
+            #{expectedDuration,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+            #{addCityid,jdbcType=VARCHAR}, #{backgroundurl,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zdb.demo.entity.CreateRoute">
+        <!--
+        @mbggenerated
+        -->
+        insert into create_route
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="chooseCity != null">
+                choose_city,
+            </if>
+            <if test="routeName != null">
+                route_name,
+            </if>
+            <if test="expectedDuration != null">
+                expected_duration,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="addCityid != null">
+                add_cityid,
+            </if>
+            <if test="backgroundurl != null">
+                backgroundUrl,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="chooseCity != null">
+                #{chooseCity,jdbcType=VARCHAR},
+            </if>
+            <if test="routeName != null">
+                #{routeName,jdbcType=VARCHAR},
+            </if>
+            <if test="expectedDuration != null">
+                #{expectedDuration,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="addCityid != null">
+                #{addCityid,jdbcType=VARCHAR},
+            </if>
+            <if test="backgroundurl != null">
+                #{backgroundurl,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.zdb.demo.entity.CreateRouteExample" resultType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from create_route
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update create_route
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.chooseCity != null">
+                choose_city = #{record.chooseCity,jdbcType=VARCHAR},
+            </if>
+            <if test="record.routeName != null">
+                route_name = #{record.routeName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.expectedDuration != null">
+                expected_duration = #{record.expectedDuration,jdbcType=VARCHAR},
+            </if>
+            <if test="record.remarks != null">
+                remarks = #{record.remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="record.userId != null">
+                user_id = #{record.userId,jdbcType=INTEGER},
+            </if>
+            <if test="record.addCityid != null">
+                add_cityid = #{record.addCityid,jdbcType=VARCHAR},
+            </if>
+            <if test="record.backgroundurl != null">
+                backgroundUrl = #{record.backgroundurl,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update create_route
+        set id = #{record.id,jdbcType=INTEGER},
+            choose_city = #{record.chooseCity,jdbcType=VARCHAR},
+            route_name = #{record.routeName,jdbcType=VARCHAR},
+            expected_duration = #{record.expectedDuration,jdbcType=VARCHAR},
+            remarks = #{record.remarks,jdbcType=VARCHAR},
+            user_id = #{record.userId,jdbcType=INTEGER},
+            add_cityid = #{record.addCityid,jdbcType=VARCHAR},
+            backgroundUrl = #{record.backgroundurl,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zdb.demo.entity.CreateRoute">
+        <!--
+        @mbggenerated
+        -->
+        update create_route
+        <set>
+            <if test="chooseCity != null">
+                choose_city = #{chooseCity,jdbcType=VARCHAR},
+            </if>
+            <if test="routeName != null">
+                route_name = #{routeName,jdbcType=VARCHAR},
+            </if>
+            <if test="expectedDuration != null">
+                expected_duration = #{expectedDuration,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="addCityid != null">
+                add_cityid = #{addCityid,jdbcType=VARCHAR},
+            </if>
+            <if test="backgroundurl != null">
+                backgroundUrl = #{backgroundurl,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zdb.demo.entity.CreateRoute">
+        <!--
+        @mbggenerated
+        -->
+        update create_route
+        set choose_city = #{chooseCity,jdbcType=VARCHAR},
+            route_name = #{routeName,jdbcType=VARCHAR},
+            expected_duration = #{expectedDuration,jdbcType=VARCHAR},
+            remarks = #{remarks,jdbcType=VARCHAR},
+            user_id = #{userId,jdbcType=INTEGER},
+            add_cityid = #{addCityid,jdbcType=VARCHAR},
+            backgroundUrl = #{backgroundurl,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

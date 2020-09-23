@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdb.demo.mapper.ReplyMapper">
+    <resultMap id="BaseResultMap" type="com.zdb.demo.entity.Reply">
+        <!--
+        @mbggenerated
+        -->
+        <id column="lr_id" jdbcType="INTEGER" property="lrId" />
+        <result column="lr_name" jdbcType="VARCHAR" property="lrName" />
+        <result column="lr_date" jdbcType="TIMESTAMP" property="lrDate" />
+        <result column="lr_content" jdbcType="VARCHAR" property="lrContent" />
+        <result column="lr_for_word" jdbcType="VARCHAR" property="lrForWord" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+        @mbggenerated
+        -->
+        lr_id, lr_name, lr_date, lr_content, lr_for_word
+    </sql>
+    <select id="selectByExample" parameterType="com.zdb.demo.entity.ReplyExample" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from reply
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0">
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from reply
+        where lr_id = #{lrId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        delete from reply
+        where lr_id = #{lrId,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.zdb.demo.entity.ReplyExample">
+        <!--
+        @mbggenerated
+        -->
+        delete from reply
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.zdb.demo.entity.Reply">
+        <!--
+        @mbggenerated
+        -->
+        insert into reply (lr_id, lr_name, lr_date, 
+            lr_content, lr_for_word)
+        values (#{lrId,jdbcType=INTEGER}, #{lrName,jdbcType=VARCHAR}, #{lrDate,jdbcType=TIMESTAMP}, 
+            #{lrContent,jdbcType=VARCHAR}, #{lrForWord,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zdb.demo.entity.Reply">
+        <!--
+        @mbggenerated
+        -->
+        insert into reply
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="lrId != null">
+                lr_id,
+            </if>
+            <if test="lrName != null">
+                lr_name,
+            </if>
+            <if test="lrDate != null">
+                lr_date,
+            </if>
+            <if test="lrContent != null">
+                lr_content,
+            </if>
+            <if test="lrForWord != null">
+                lr_for_word,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="lrId != null">
+                #{lrId,jdbcType=INTEGER},
+            </if>
+            <if test="lrName != null">
+                #{lrName,jdbcType=VARCHAR},
+            </if>
+            <if test="lrDate != null">
+                #{lrDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lrContent != null">
+                #{lrContent,jdbcType=VARCHAR},
+            </if>
+            <if test="lrForWord != null">
+                #{lrForWord,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.zdb.demo.entity.ReplyExample" resultType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from reply
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update reply
+        <set>
+            <if test="record.lrId != null">
+                lr_id = #{record.lrId,jdbcType=INTEGER},
+            </if>
+            <if test="record.lrName != null">
+                lr_name = #{record.lrName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.lrDate != null">
+                lr_date = #{record.lrDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.lrContent != null">
+                lr_content = #{record.lrContent,jdbcType=VARCHAR},
+            </if>
+            <if test="record.lrForWord != null">
+                lr_for_word = #{record.lrForWord,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update reply
+        set lr_id = #{record.lrId,jdbcType=INTEGER},
+            lr_name = #{record.lrName,jdbcType=VARCHAR},
+            lr_date = #{record.lrDate,jdbcType=TIMESTAMP},
+            lr_content = #{record.lrContent,jdbcType=VARCHAR},
+            lr_for_word = #{record.lrForWord,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zdb.demo.entity.Reply">
+        <!--
+        @mbggenerated
+        -->
+        update reply
+        <set>
+            <if test="lrName != null">
+                lr_name = #{lrName,jdbcType=VARCHAR},
+            </if>
+            <if test="lrDate != null">
+                lr_date = #{lrDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lrContent != null">
+                lr_content = #{lrContent,jdbcType=VARCHAR},
+            </if>
+            <if test="lrForWord != null">
+                lr_for_word = #{lrForWord,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where lr_id = #{lrId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zdb.demo.entity.Reply">
+        <!--
+        @mbggenerated
+        -->
+        update reply
+        set lr_name = #{lrName,jdbcType=VARCHAR},
+            lr_date = #{lrDate,jdbcType=TIMESTAMP},
+            lr_content = #{lrContent,jdbcType=VARCHAR},
+            lr_for_word = #{lrForWord,jdbcType=VARCHAR}
+        where lr_id = #{lrId,jdbcType=INTEGER}
+    </update>
+</mapper>

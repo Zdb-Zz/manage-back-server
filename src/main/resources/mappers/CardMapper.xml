@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdb.demo.mapper.CardMapper">
+    <resultMap id="BaseResultMap" type="com.zdb.demo.entity.Card">
+        <!--
+        @mbggenerated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+        <result column="backgroundUrl" jdbcType="VARCHAR" property="backgroundurl" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+        <result column="dakatime" jdbcType="TIMESTAMP" property="dakatime" />
+        <result column="dakapoeple" jdbcType="VARCHAR" property="dakapoeple" />
+        <result column="FamousAllusions" jdbcType="VARCHAR" property="famousallusions" />
+        <result column="mood" jdbcType="VARCHAR" property="mood" />
+        <result column="word1" jdbcType="VARCHAR" property="word1" />
+        <result column="img1" jdbcType="VARCHAR" property="img1" />
+        <result column="word2" jdbcType="VARCHAR" property="word2" />
+        <result column="img2" jdbcType="VARCHAR" property="img2" />
+        <result column="word3" jdbcType="VARCHAR" property="word3" />
+        <result column="img3" jdbcType="VARCHAR" property="img3" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+        @mbggenerated
+        -->
+        id, keywords, backgroundUrl, title, introduce, dakatime, dakapoeple, FamousAllusions, 
+        mood, word1, img1, word2, img2, word3, img3
+    </sql>
+    <select id="selectByExample" parameterType="com.zdb.demo.entity.CardExample" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from card
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0">
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from card
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        delete from card
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.zdb.demo.entity.CardExample">
+        <!--
+        @mbggenerated
+        -->
+        delete from card
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.zdb.demo.entity.Card">
+        <!--
+        @mbggenerated
+        -->
+        insert into card (id, keywords, backgroundUrl, 
+            title, introduce, dakatime, 
+            dakapoeple, FamousAllusions, mood, 
+            word1, img1, word2, 
+            img2, word3, img3
+            )
+        values (#{id,jdbcType=INTEGER}, #{keywords,jdbcType=VARCHAR}, #{backgroundurl,jdbcType=VARCHAR}, 
+            #{title,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, #{dakatime,jdbcType=TIMESTAMP}, 
+            #{dakapoeple,jdbcType=VARCHAR}, #{famousallusions,jdbcType=VARCHAR}, #{mood,jdbcType=VARCHAR}, 
+            #{word1,jdbcType=VARCHAR}, #{img1,jdbcType=VARCHAR}, #{word2,jdbcType=VARCHAR}, 
+            #{img2,jdbcType=VARCHAR}, #{word3,jdbcType=VARCHAR}, #{img3,jdbcType=VARCHAR}
+            )
+    </insert>
+    <insert id="insertSelective" parameterType="com.zdb.demo.entity.Card">
+        <!--
+        @mbggenerated
+        -->
+        insert into card
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="keywords != null">
+                keywords,
+            </if>
+            <if test="backgroundurl != null">
+                backgroundUrl,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="introduce != null">
+                introduce,
+            </if>
+            <if test="dakatime != null">
+                dakatime,
+            </if>
+            <if test="dakapoeple != null">
+                dakapoeple,
+            </if>
+            <if test="famousallusions != null">
+                FamousAllusions,
+            </if>
+            <if test="mood != null">
+                mood,
+            </if>
+            <if test="word1 != null">
+                word1,
+            </if>
+            <if test="img1 != null">
+                img1,
+            </if>
+            <if test="word2 != null">
+                word2,
+            </if>
+            <if test="img2 != null">
+                img2,
+            </if>
+            <if test="word3 != null">
+                word3,
+            </if>
+            <if test="img3 != null">
+                img3,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="keywords != null">
+                #{keywords,jdbcType=VARCHAR},
+            </if>
+            <if test="backgroundurl != null">
+                #{backgroundurl,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="introduce != null">
+                #{introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="dakatime != null">
+                #{dakatime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dakapoeple != null">
+                #{dakapoeple,jdbcType=VARCHAR},
+            </if>
+            <if test="famousallusions != null">
+                #{famousallusions,jdbcType=VARCHAR},
+            </if>
+            <if test="mood != null">
+                #{mood,jdbcType=VARCHAR},
+            </if>
+            <if test="word1 != null">
+                #{word1,jdbcType=VARCHAR},
+            </if>
+            <if test="img1 != null">
+                #{img1,jdbcType=VARCHAR},
+            </if>
+            <if test="word2 != null">
+                #{word2,jdbcType=VARCHAR},
+            </if>
+            <if test="img2 != null">
+                #{img2,jdbcType=VARCHAR},
+            </if>
+            <if test="word3 != null">
+                #{word3,jdbcType=VARCHAR},
+            </if>
+            <if test="img3 != null">
+                #{img3,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.zdb.demo.entity.CardExample" resultType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from card
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update card
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.keywords != null">
+                keywords = #{record.keywords,jdbcType=VARCHAR},
+            </if>
+            <if test="record.backgroundurl != null">
+                backgroundUrl = #{record.backgroundurl,jdbcType=VARCHAR},
+            </if>
+            <if test="record.title != null">
+                title = #{record.title,jdbcType=VARCHAR},
+            </if>
+            <if test="record.introduce != null">
+                introduce = #{record.introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="record.dakatime != null">
+                dakatime = #{record.dakatime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.dakapoeple != null">
+                dakapoeple = #{record.dakapoeple,jdbcType=VARCHAR},
+            </if>
+            <if test="record.famousallusions != null">
+                FamousAllusions = #{record.famousallusions,jdbcType=VARCHAR},
+            </if>
+            <if test="record.mood != null">
+                mood = #{record.mood,jdbcType=VARCHAR},
+            </if>
+            <if test="record.word1 != null">
+                word1 = #{record.word1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.img1 != null">
+                img1 = #{record.img1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.word2 != null">
+                word2 = #{record.word2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.img2 != null">
+                img2 = #{record.img2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.word3 != null">
+                word3 = #{record.word3,jdbcType=VARCHAR},
+            </if>
+            <if test="record.img3 != null">
+                img3 = #{record.img3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update card
+        set id = #{record.id,jdbcType=INTEGER},
+            keywords = #{record.keywords,jdbcType=VARCHAR},
+            backgroundUrl = #{record.backgroundurl,jdbcType=VARCHAR},
+            title = #{record.title,jdbcType=VARCHAR},
+            introduce = #{record.introduce,jdbcType=VARCHAR},
+            dakatime = #{record.dakatime,jdbcType=TIMESTAMP},
+            dakapoeple = #{record.dakapoeple,jdbcType=VARCHAR},
+            FamousAllusions = #{record.famousallusions,jdbcType=VARCHAR},
+            mood = #{record.mood,jdbcType=VARCHAR},
+            word1 = #{record.word1,jdbcType=VARCHAR},
+            img1 = #{record.img1,jdbcType=VARCHAR},
+            word2 = #{record.word2,jdbcType=VARCHAR},
+            img2 = #{record.img2,jdbcType=VARCHAR},
+            word3 = #{record.word3,jdbcType=VARCHAR},
+            img3 = #{record.img3,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zdb.demo.entity.Card">
+        <!--
+        @mbggenerated
+        -->
+        update card
+        <set>
+            <if test="keywords != null">
+                keywords = #{keywords,jdbcType=VARCHAR},
+            </if>
+            <if test="backgroundurl != null">
+                backgroundUrl = #{backgroundurl,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="introduce != null">
+                introduce = #{introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="dakatime != null">
+                dakatime = #{dakatime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dakapoeple != null">
+                dakapoeple = #{dakapoeple,jdbcType=VARCHAR},
+            </if>
+            <if test="famousallusions != null">
+                FamousAllusions = #{famousallusions,jdbcType=VARCHAR},
+            </if>
+            <if test="mood != null">
+                mood = #{mood,jdbcType=VARCHAR},
+            </if>
+            <if test="word1 != null">
+                word1 = #{word1,jdbcType=VARCHAR},
+            </if>
+            <if test="img1 != null">
+                img1 = #{img1,jdbcType=VARCHAR},
+            </if>
+            <if test="word2 != null">
+                word2 = #{word2,jdbcType=VARCHAR},
+            </if>
+            <if test="img2 != null">
+                img2 = #{img2,jdbcType=VARCHAR},
+            </if>
+            <if test="word3 != null">
+                word3 = #{word3,jdbcType=VARCHAR},
+            </if>
+            <if test="img3 != null">
+                img3 = #{img3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zdb.demo.entity.Card">
+        <!--
+        @mbggenerated
+        -->
+        update card
+        set keywords = #{keywords,jdbcType=VARCHAR},
+            backgroundUrl = #{backgroundurl,jdbcType=VARCHAR},
+            title = #{title,jdbcType=VARCHAR},
+            introduce = #{introduce,jdbcType=VARCHAR},
+            dakatime = #{dakatime,jdbcType=TIMESTAMP},
+            dakapoeple = #{dakapoeple,jdbcType=VARCHAR},
+            FamousAllusions = #{famousallusions,jdbcType=VARCHAR},
+            mood = #{mood,jdbcType=VARCHAR},
+            word1 = #{word1,jdbcType=VARCHAR},
+            img1 = #{img1,jdbcType=VARCHAR},
+            word2 = #{word2,jdbcType=VARCHAR},
+            img2 = #{img2,jdbcType=VARCHAR},
+            word3 = #{word3,jdbcType=VARCHAR},
+            img3 = #{img3,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

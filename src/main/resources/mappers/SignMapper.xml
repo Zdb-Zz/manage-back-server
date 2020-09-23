@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdb.demo.mapper.SignMapper">
+    <resultMap id="BaseResultMap" type="com.zdb.demo.entity.Sign">
+        <!--
+        @mbggenerated
+        -->
+        <id column="sign_id" jdbcType="INTEGER" property="signId" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="continue_da" jdbcType="INTEGER" property="continueDa" />
+        <result column="rignin_time" jdbcType="INTEGER" property="rigninTime" />
+        <result column="rignin_coun" jdbcType="INTEGER" property="rigninCoun" />
+        <result column="sign_get_po" jdbcType="VARCHAR" property="signGetPo" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+        @mbggenerated
+        -->
+        sign_id, user_id, continue_da, rignin_time, rignin_coun, sign_get_po
+    </sql>
+    <select id="selectByExample" parameterType="com.zdb.demo.entity.SignExample" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from sign
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0">
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from sign
+        where sign_id = #{signId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        delete from sign
+        where sign_id = #{signId,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.zdb.demo.entity.SignExample">
+        <!--
+        @mbggenerated
+        -->
+        delete from sign
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.zdb.demo.entity.Sign">
+        <!--
+        @mbggenerated
+        -->
+        insert into sign (sign_id, user_id, continue_da, 
+            rignin_time, rignin_coun, sign_get_po
+            )
+        values (#{signId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{continueDa,jdbcType=INTEGER}, 
+            #{rigninTime,jdbcType=INTEGER}, #{rigninCoun,jdbcType=INTEGER}, #{signGetPo,jdbcType=VARCHAR}
+            )
+    </insert>
+    <insert id="insertSelective" parameterType="com.zdb.demo.entity.Sign">
+        <!--
+        @mbggenerated
+        -->
+        insert into sign
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="signId != null">
+                sign_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="continueDa != null">
+                continue_da,
+            </if>
+            <if test="rigninTime != null">
+                rignin_time,
+            </if>
+            <if test="rigninCoun != null">
+                rignin_coun,
+            </if>
+            <if test="signGetPo != null">
+                sign_get_po,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="signId != null">
+                #{signId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="continueDa != null">
+                #{continueDa,jdbcType=INTEGER},
+            </if>
+            <if test="rigninTime != null">
+                #{rigninTime,jdbcType=INTEGER},
+            </if>
+            <if test="rigninCoun != null">
+                #{rigninCoun,jdbcType=INTEGER},
+            </if>
+            <if test="signGetPo != null">
+                #{signGetPo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.zdb.demo.entity.SignExample" resultType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from sign
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update sign
+        <set>
+            <if test="record.signId != null">
+                sign_id = #{record.signId,jdbcType=INTEGER},
+            </if>
+            <if test="record.userId != null">
+                user_id = #{record.userId,jdbcType=INTEGER},
+            </if>
+            <if test="record.continueDa != null">
+                continue_da = #{record.continueDa,jdbcType=INTEGER},
+            </if>
+            <if test="record.rigninTime != null">
+                rignin_time = #{record.rigninTime,jdbcType=INTEGER},
+            </if>
+            <if test="record.rigninCoun != null">
+                rignin_coun = #{record.rigninCoun,jdbcType=INTEGER},
+            </if>
+            <if test="record.signGetPo != null">
+                sign_get_po = #{record.signGetPo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update sign
+        set sign_id = #{record.signId,jdbcType=INTEGER},
+            user_id = #{record.userId,jdbcType=INTEGER},
+            continue_da = #{record.continueDa,jdbcType=INTEGER},
+            rignin_time = #{record.rigninTime,jdbcType=INTEGER},
+            rignin_coun = #{record.rigninCoun,jdbcType=INTEGER},
+            sign_get_po = #{record.signGetPo,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zdb.demo.entity.Sign">
+        <!--
+        @mbggenerated
+        -->
+        update sign
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="continueDa != null">
+                continue_da = #{continueDa,jdbcType=INTEGER},
+            </if>
+            <if test="rigninTime != null">
+                rignin_time = #{rigninTime,jdbcType=INTEGER},
+            </if>
+            <if test="rigninCoun != null">
+                rignin_coun = #{rigninCoun,jdbcType=INTEGER},
+            </if>
+            <if test="signGetPo != null">
+                sign_get_po = #{signGetPo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where sign_id = #{signId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zdb.demo.entity.Sign">
+        <!--
+        @mbggenerated
+        -->
+        update sign
+        set user_id = #{userId,jdbcType=INTEGER},
+            continue_da = #{continueDa,jdbcType=INTEGER},
+            rignin_time = #{rigninTime,jdbcType=INTEGER},
+            rignin_coun = #{rigninCoun,jdbcType=INTEGER},
+            sign_get_po = #{signGetPo,jdbcType=VARCHAR}
+        where sign_id = #{signId,jdbcType=INTEGER}
+    </update>
+</mapper>

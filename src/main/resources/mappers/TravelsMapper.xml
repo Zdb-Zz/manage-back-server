@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdb.demo.mapper.TravelsMapper">
+    <resultMap id="BaseResultMap" type="com.zdb.demo.entity.Travels">
+        <!--
+        @mbggenerated
+        -->
+        <id column="answer_id" jdbcType="INTEGER" property="answerId" />
+        <result column="words" jdbcType="VARCHAR" property="words" />
+        <result column="showUserImg" jdbcType="VARCHAR" property="showuserimg" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+        <result column="location" jdbcType="VARCHAR" property="location" />
+        <result column="prase_count" jdbcType="INTEGER" property="praseCount" />
+        <result column="atName" jdbcType="VARCHAR" property="atname" />
+        <result column="topicWords" jdbcType="VARCHAR" property="topicwords" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+        @mbggenerated
+        -->
+        answer_id, words, showUserImg, user_id, createTime, location, prase_count, atName, 
+        topicWords
+    </sql>
+    <select id="selectByExample" parameterType="com.zdb.demo.entity.TravelsExample" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from travels
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0">
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from travels
+        where answer_id = #{answerId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        delete from travels
+        where answer_id = #{answerId,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.zdb.demo.entity.TravelsExample">
+        <!--
+        @mbggenerated
+        -->
+        delete from travels
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.zdb.demo.entity.Travels">
+        <!--
+        @mbggenerated
+        -->
+        insert into travels (answer_id, words, showUserImg, 
+            user_id, createTime, location, 
+            prase_count, atName, topicWords
+            )
+        values (#{answerId,jdbcType=INTEGER}, #{words,jdbcType=VARCHAR}, #{showuserimg,jdbcType=VARCHAR}, 
+            #{userId,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{location,jdbcType=VARCHAR}, 
+            #{praseCount,jdbcType=INTEGER}, #{atname,jdbcType=VARCHAR}, #{topicwords,jdbcType=VARCHAR}
+            )
+    </insert>
+    <insert id="insertSelective" parameterType="com.zdb.demo.entity.Travels">
+        <!--
+        @mbggenerated
+        -->
+        insert into travels
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="answerId != null">
+                answer_id,
+            </if>
+            <if test="words != null">
+                words,
+            </if>
+            <if test="showuserimg != null">
+                showUserImg,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+            <if test="location != null">
+                location,
+            </if>
+            <if test="praseCount != null">
+                prase_count,
+            </if>
+            <if test="atname != null">
+                atName,
+            </if>
+            <if test="topicwords != null">
+                topicWords,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="answerId != null">
+                #{answerId,jdbcType=INTEGER},
+            </if>
+            <if test="words != null">
+                #{words,jdbcType=VARCHAR},
+            </if>
+            <if test="showuserimg != null">
+                #{showuserimg,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="location != null">
+                #{location,jdbcType=VARCHAR},
+            </if>
+            <if test="praseCount != null">
+                #{praseCount,jdbcType=INTEGER},
+            </if>
+            <if test="atname != null">
+                #{atname,jdbcType=VARCHAR},
+            </if>
+            <if test="topicwords != null">
+                #{topicwords,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.zdb.demo.entity.TravelsExample" resultType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from travels
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update travels
+        <set>
+            <if test="record.answerId != null">
+                answer_id = #{record.answerId,jdbcType=INTEGER},
+            </if>
+            <if test="record.words != null">
+                words = #{record.words,jdbcType=VARCHAR},
+            </if>
+            <if test="record.showuserimg != null">
+                showUserImg = #{record.showuserimg,jdbcType=VARCHAR},
+            </if>
+            <if test="record.userId != null">
+                user_id = #{record.userId,jdbcType=INTEGER},
+            </if>
+            <if test="record.createtime != null">
+                createTime = #{record.createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.location != null">
+                location = #{record.location,jdbcType=VARCHAR},
+            </if>
+            <if test="record.praseCount != null">
+                prase_count = #{record.praseCount,jdbcType=INTEGER},
+            </if>
+            <if test="record.atname != null">
+                atName = #{record.atname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.topicwords != null">
+                topicWords = #{record.topicwords,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update travels
+        set answer_id = #{record.answerId,jdbcType=INTEGER},
+            words = #{record.words,jdbcType=VARCHAR},
+            showUserImg = #{record.showuserimg,jdbcType=VARCHAR},
+            user_id = #{record.userId,jdbcType=INTEGER},
+            createTime = #{record.createtime,jdbcType=TIMESTAMP},
+            location = #{record.location,jdbcType=VARCHAR},
+            prase_count = #{record.praseCount,jdbcType=INTEGER},
+            atName = #{record.atname,jdbcType=VARCHAR},
+            topicWords = #{record.topicwords,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zdb.demo.entity.Travels">
+        <!--
+        @mbggenerated
+        -->
+        update travels
+        <set>
+            <if test="words != null">
+                words = #{words,jdbcType=VARCHAR},
+            </if>
+            <if test="showuserimg != null">
+                showUserImg = #{showuserimg,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="location != null">
+                location = #{location,jdbcType=VARCHAR},
+            </if>
+            <if test="praseCount != null">
+                prase_count = #{praseCount,jdbcType=INTEGER},
+            </if>
+            <if test="atname != null">
+                atName = #{atname,jdbcType=VARCHAR},
+            </if>
+            <if test="topicwords != null">
+                topicWords = #{topicwords,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where answer_id = #{answerId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zdb.demo.entity.Travels">
+        <!--
+        @mbggenerated
+        -->
+        update travels
+        set words = #{words,jdbcType=VARCHAR},
+            showUserImg = #{showuserimg,jdbcType=VARCHAR},
+            user_id = #{userId,jdbcType=INTEGER},
+            createTime = #{createtime,jdbcType=TIMESTAMP},
+            location = #{location,jdbcType=VARCHAR},
+            prase_count = #{praseCount,jdbcType=INTEGER},
+            atName = #{atname,jdbcType=VARCHAR},
+            topicWords = #{topicwords,jdbcType=VARCHAR}
+        where answer_id = #{answerId,jdbcType=INTEGER}
+    </update>
+</mapper>

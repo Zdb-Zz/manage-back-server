@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdb.demo.mapper.LiuyanMapper">
+    <resultMap id="BaseResultMap" type="com.zdb.demo.entity.Liuyan">
+        <!--
+        @mbggenerated
+        -->
+        <id column="ly_id" jdbcType="INTEGER" property="lyId" />
+        <result column="ly_name" jdbcType="VARCHAR" property="lyName" />
+        <result column="ly_date" jdbcType="DATE" property="lyDate" />
+        <result column="ly_content" jdbcType="VARCHAR" property="lyContent" />
+        <result column="ly_for_name" jdbcType="VARCHAR" property="lyForName" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+        @mbggenerated
+        -->
+        ly_id, ly_name, ly_date, ly_content, ly_for_name
+    </sql>
+    <select id="selectByExample" parameterType="com.zdb.demo.entity.LiuyanExample" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from liuyan
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0">
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from liuyan
+        where ly_id = #{lyId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        delete from liuyan
+        where ly_id = #{lyId,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.zdb.demo.entity.LiuyanExample">
+        <!--
+        @mbggenerated
+        -->
+        delete from liuyan
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.zdb.demo.entity.Liuyan">
+        <!--
+        @mbggenerated
+        -->
+        insert into liuyan (ly_id, ly_name, ly_date, 
+            ly_content, ly_for_name)
+        values (#{lyId,jdbcType=INTEGER}, #{lyName,jdbcType=VARCHAR}, #{lyDate,jdbcType=DATE}, 
+            #{lyContent,jdbcType=VARCHAR}, #{lyForName,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zdb.demo.entity.Liuyan">
+        <!--
+        @mbggenerated
+        -->
+        insert into liuyan
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="lyId != null">
+                ly_id,
+            </if>
+            <if test="lyName != null">
+                ly_name,
+            </if>
+            <if test="lyDate != null">
+                ly_date,
+            </if>
+            <if test="lyContent != null">
+                ly_content,
+            </if>
+            <if test="lyForName != null">
+                ly_for_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="lyId != null">
+                #{lyId,jdbcType=INTEGER},
+            </if>
+            <if test="lyName != null">
+                #{lyName,jdbcType=VARCHAR},
+            </if>
+            <if test="lyDate != null">
+                #{lyDate,jdbcType=DATE},
+            </if>
+            <if test="lyContent != null">
+                #{lyContent,jdbcType=VARCHAR},
+            </if>
+            <if test="lyForName != null">
+                #{lyForName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.zdb.demo.entity.LiuyanExample" resultType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from liuyan
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update liuyan
+        <set>
+            <if test="record.lyId != null">
+                ly_id = #{record.lyId,jdbcType=INTEGER},
+            </if>
+            <if test="record.lyName != null">
+                ly_name = #{record.lyName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.lyDate != null">
+                ly_date = #{record.lyDate,jdbcType=DATE},
+            </if>
+            <if test="record.lyContent != null">
+                ly_content = #{record.lyContent,jdbcType=VARCHAR},
+            </if>
+            <if test="record.lyForName != null">
+                ly_for_name = #{record.lyForName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update liuyan
+        set ly_id = #{record.lyId,jdbcType=INTEGER},
+            ly_name = #{record.lyName,jdbcType=VARCHAR},
+            ly_date = #{record.lyDate,jdbcType=DATE},
+            ly_content = #{record.lyContent,jdbcType=VARCHAR},
+            ly_for_name = #{record.lyForName,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zdb.demo.entity.Liuyan">
+        <!--
+        @mbggenerated
+        -->
+        update liuyan
+        <set>
+            <if test="lyName != null">
+                ly_name = #{lyName,jdbcType=VARCHAR},
+            </if>
+            <if test="lyDate != null">
+                ly_date = #{lyDate,jdbcType=DATE},
+            </if>
+            <if test="lyContent != null">
+                ly_content = #{lyContent,jdbcType=VARCHAR},
+            </if>
+            <if test="lyForName != null">
+                ly_for_name = #{lyForName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ly_id = #{lyId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zdb.demo.entity.Liuyan">
+        <!--
+        @mbggenerated
+        -->
+        update liuyan
+        set ly_name = #{lyName,jdbcType=VARCHAR},
+            ly_date = #{lyDate,jdbcType=DATE},
+            ly_content = #{lyContent,jdbcType=VARCHAR},
+            ly_for_name = #{lyForName,jdbcType=VARCHAR}
+        where ly_id = #{lyId,jdbcType=INTEGER}
+    </update>
+</mapper>
