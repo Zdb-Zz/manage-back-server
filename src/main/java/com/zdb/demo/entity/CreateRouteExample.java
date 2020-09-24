@@ -322,7 +322,7 @@ public class CreateRouteExample {
         }
 
         public Criteria andChooseCityNotLike(String value) {
-            addCriterion("choose_city not like", value, "chooseCity");
+            addCriterion("choose_city not like","%"+ value+"%", "chooseCity");
             return (Criteria) this;
         }
 
