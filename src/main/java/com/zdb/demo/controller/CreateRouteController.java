@@ -3,13 +3,10 @@ package com.zdb.demo.controller;
 
 import com.github.pagehelper.Page;
 import com.zdb.demo.entity.CreateRoute;
-import com.zdb.demo.entity.User;
 import com.zdb.demo.service.CityService;
 import com.zdb.demo.service.CreateRouteService;
 import com.zdb.demo.util.ResultUtil;
-import com.zdb.demo.util.SortUtil;
 import lombok.extern.slf4j.Slf4j;
-import net.sf.json.JSONObject;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,6 +66,10 @@ public class CreateRouteController {
         }
     }
 
+    /**
+     * 获取选择最多的五个景点
+     * @return
+     */
     @GetMapping("/getRouteFire")
     public Map<String, Object> getRouteFire() {
         HashMap<String, Object> fire = new HashMap<>();
