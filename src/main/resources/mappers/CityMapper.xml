@@ -12,6 +12,18 @@
         <result column="longitude" jdbcType="REAL" property="longitude" />
         <result column="latitude" jdbcType="REAL" property="latitude" />
         <result column="imgView" jdbcType="VARCHAR" property="imgview" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+        <result column="dakatime" jdbcType="VARCHAR" property="dakatime" />
+        <result column="dakapeople" jdbcType="VARCHAR" property="dakapeople" />
+        <result column="famousallusions" jdbcType="VARCHAR" property="famousallusions" />
+        <result column="smalltitle" jdbcType="VARCHAR" property="smalltitle" />
+        <result column="word1" jdbcType="VARCHAR" property="word1" />
+        <result column="img1" jdbcType="VARCHAR" property="img1" />
+        <result column="word2" jdbcType="VARCHAR" property="word2" />
+        <result column="img2" jdbcType="VARCHAR" property="img2" />
+        <result column="word3" jdbcType="VARCHAR" property="word3" />
+        <result column="img3" jdbcType="VARCHAR" property="img3" />
     </resultMap>
     <sql id="Example_Where_Clause">
         <!--
@@ -81,7 +93,8 @@
         <!--
         @mbggenerated
         -->
-        id, Name, City, Scenic_Spot, longitude, latitude, imgView
+        id, Name, City, Scenic_Spot, longitude, latitude, imgView, title, introduce, dakatime, 
+        dakapeople, famousallusions, smalltitle, word1, img1, word2, img2, word3, img3
     </sql>
     <select id="selectByExample" parameterType="com.zdb.demo.entity.CityExample" resultMap="BaseResultMap">
         <!--
@@ -134,10 +147,18 @@
         -->
         insert into city (id, Name, City, 
             Scenic_Spot, longitude, latitude, 
-            imgView)
+            imgView, title, introduce, 
+            dakatime, dakapeople, famousallusions, 
+            smalltitle, word1, img1, 
+            word2, img2, word3, 
+            img3)
         values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
             #{scenicSpot,jdbcType=VARCHAR}, #{longitude,jdbcType=REAL}, #{latitude,jdbcType=REAL}, 
-            #{imgview,jdbcType=VARCHAR})
+            #{imgview,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, 
+            #{dakatime,jdbcType=VARCHAR}, #{dakapeople,jdbcType=VARCHAR}, #{famousallusions,jdbcType=VARCHAR}, 
+            #{smalltitle,jdbcType=VARCHAR}, #{word1,jdbcType=VARCHAR}, #{img1,jdbcType=VARCHAR}, 
+            #{word2,jdbcType=VARCHAR}, #{img2,jdbcType=VARCHAR}, #{word3,jdbcType=VARCHAR}, 
+            #{img3,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="com.zdb.demo.entity.City">
         <!--
@@ -166,6 +187,42 @@
             <if test="imgview != null">
                 imgView,
             </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="introduce != null">
+                introduce,
+            </if>
+            <if test="dakatime != null">
+                dakatime,
+            </if>
+            <if test="dakapeople != null">
+                dakapeople,
+            </if>
+            <if test="famousallusions != null">
+                famousallusions,
+            </if>
+            <if test="smalltitle != null">
+                smalltitle,
+            </if>
+            <if test="word1 != null">
+                word1,
+            </if>
+            <if test="img1 != null">
+                img1,
+            </if>
+            <if test="word2 != null">
+                word2,
+            </if>
+            <if test="img2 != null">
+                img2,
+            </if>
+            <if test="word3 != null">
+                word3,
+            </if>
+            <if test="img3 != null">
+                img3,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -188,6 +245,42 @@
             </if>
             <if test="imgview != null">
                 #{imgview,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="introduce != null">
+                #{introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="dakatime != null">
+                #{dakatime,jdbcType=VARCHAR},
+            </if>
+            <if test="dakapeople != null">
+                #{dakapeople,jdbcType=VARCHAR},
+            </if>
+            <if test="famousallusions != null">
+                #{famousallusions,jdbcType=VARCHAR},
+            </if>
+            <if test="smalltitle != null">
+                #{smalltitle,jdbcType=VARCHAR},
+            </if>
+            <if test="word1 != null">
+                #{word1,jdbcType=VARCHAR},
+            </if>
+            <if test="img1 != null">
+                #{img1,jdbcType=VARCHAR},
+            </if>
+            <if test="word2 != null">
+                #{word2,jdbcType=VARCHAR},
+            </if>
+            <if test="img2 != null">
+                #{img2,jdbcType=VARCHAR},
+            </if>
+            <if test="word3 != null">
+                #{word3,jdbcType=VARCHAR},
+            </if>
+            <if test="img3 != null">
+                #{img3,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -227,6 +320,42 @@
             <if test="record.imgview != null">
                 imgView = #{record.imgview,jdbcType=VARCHAR},
             </if>
+            <if test="record.title != null">
+                title = #{record.title,jdbcType=VARCHAR},
+            </if>
+            <if test="record.introduce != null">
+                introduce = #{record.introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="record.dakatime != null">
+                dakatime = #{record.dakatime,jdbcType=VARCHAR},
+            </if>
+            <if test="record.dakapeople != null">
+                dakapeople = #{record.dakapeople,jdbcType=VARCHAR},
+            </if>
+            <if test="record.famousallusions != null">
+                famousallusions = #{record.famousallusions,jdbcType=VARCHAR},
+            </if>
+            <if test="record.smalltitle != null">
+                smalltitle = #{record.smalltitle,jdbcType=VARCHAR},
+            </if>
+            <if test="record.word1 != null">
+                word1 = #{record.word1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.img1 != null">
+                img1 = #{record.img1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.word2 != null">
+                word2 = #{record.word2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.img2 != null">
+                img2 = #{record.img2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.word3 != null">
+                word3 = #{record.word3,jdbcType=VARCHAR},
+            </if>
+            <if test="record.img3 != null">
+                img3 = #{record.img3,jdbcType=VARCHAR},
+            </if>
         </set>
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause" />
@@ -243,7 +372,19 @@
             Scenic_Spot = #{record.scenicSpot,jdbcType=VARCHAR},
             longitude = #{record.longitude,jdbcType=REAL},
             latitude = #{record.latitude,jdbcType=REAL},
-            imgView = #{record.imgview,jdbcType=VARCHAR}
+            imgView = #{record.imgview,jdbcType=VARCHAR},
+            title = #{record.title,jdbcType=VARCHAR},
+            introduce = #{record.introduce,jdbcType=VARCHAR},
+            dakatime = #{record.dakatime,jdbcType=VARCHAR},
+            dakapeople = #{record.dakapeople,jdbcType=VARCHAR},
+            famousallusions = #{record.famousallusions,jdbcType=VARCHAR},
+            smalltitle = #{record.smalltitle,jdbcType=VARCHAR},
+            word1 = #{record.word1,jdbcType=VARCHAR},
+            img1 = #{record.img1,jdbcType=VARCHAR},
+            word2 = #{record.word2,jdbcType=VARCHAR},
+            img2 = #{record.img2,jdbcType=VARCHAR},
+            word3 = #{record.word3,jdbcType=VARCHAR},
+            img3 = #{record.img3,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause" />
         </if>
@@ -272,6 +413,42 @@
             <if test="imgview != null">
                 imgView = #{imgview,jdbcType=VARCHAR},
             </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="introduce != null">
+                introduce = #{introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="dakatime != null">
+                dakatime = #{dakatime,jdbcType=VARCHAR},
+            </if>
+            <if test="dakapeople != null">
+                dakapeople = #{dakapeople,jdbcType=VARCHAR},
+            </if>
+            <if test="famousallusions != null">
+                famousallusions = #{famousallusions,jdbcType=VARCHAR},
+            </if>
+            <if test="smalltitle != null">
+                smalltitle = #{smalltitle,jdbcType=VARCHAR},
+            </if>
+            <if test="word1 != null">
+                word1 = #{word1,jdbcType=VARCHAR},
+            </if>
+            <if test="img1 != null">
+                img1 = #{img1,jdbcType=VARCHAR},
+            </if>
+            <if test="word2 != null">
+                word2 = #{word2,jdbcType=VARCHAR},
+            </if>
+            <if test="img2 != null">
+                img2 = #{img2,jdbcType=VARCHAR},
+            </if>
+            <if test="word3 != null">
+                word3 = #{word3,jdbcType=VARCHAR},
+            </if>
+            <if test="img3 != null">
+                img3 = #{img3,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -285,7 +462,19 @@
             Scenic_Spot = #{scenicSpot,jdbcType=VARCHAR},
             longitude = #{longitude,jdbcType=REAL},
             latitude = #{latitude,jdbcType=REAL},
-            imgView = #{imgview,jdbcType=VARCHAR}
+            imgView = #{imgview,jdbcType=VARCHAR},
+            title = #{title,jdbcType=VARCHAR},
+            introduce = #{introduce,jdbcType=VARCHAR},
+            dakatime = #{dakatime,jdbcType=VARCHAR},
+            dakapeople = #{dakapeople,jdbcType=VARCHAR},
+            famousallusions = #{famousallusions,jdbcType=VARCHAR},
+            smalltitle = #{smalltitle,jdbcType=VARCHAR},
+            word1 = #{word1,jdbcType=VARCHAR},
+            img1 = #{img1,jdbcType=VARCHAR},
+            word2 = #{word2,jdbcType=VARCHAR},
+            img2 = #{img2,jdbcType=VARCHAR},
+            word3 = #{word3,jdbcType=VARCHAR},
+            img3 = #{img3,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>
