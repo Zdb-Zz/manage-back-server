@@ -11,9 +11,9 @@ import java.util.UUID;
 
 @Service("picService")
 public class PicServiceImpl  implements PicService {
-    
-    public static final String PICTUREURL = "E:/pic/";
-    public static final String CONFIGUREURL = "E:/pic/";
+
+    public static final String PICTUREURL = "C:/wwwroot/120.55.48.156/pic/白堤/";
+    public static final String CONFIGUREURL = "C:/wwwroot/120.55.48.156//pic/白堤/";
     @Override
     public Map<String,Object> addPic(MultipartFile file,MultipartFile img1,MultipartFile img2,MultipartFile img3) {
         Map<String,Object> map =new HashMap<>();
@@ -37,8 +37,6 @@ public class PicServiceImpl  implements PicService {
         }else {
             map.put("img3",null);
         }
-
-
 
         return map;
     }

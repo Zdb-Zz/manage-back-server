@@ -1,10 +1,12 @@
 package com.zdb.demo.controller;
 
 import com.github.pagehelper.Page;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.zdb.demo.entity.City;
 import com.zdb.demo.service.CityService;
 import com.zdb.demo.util.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.bouncycastle.cert.ocsp.Req;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,6 +55,16 @@ public class CityController {
             return ResultUtil.resultSuccess("修改景点成功", null, null);
         } else {
             return ResultUtil.resultFail("修改景点失败", null, null);
+        }
+    }
+
+    @GetMapping("delCity")
+    public Map<String,Object> delCity(@RequestParam(value = "id")Integer id){
+        Boolean isSuccess = cityService.delCity(id);
+        if (isSuccess ) {
+            return ResultUtil.resultSuccess("删改景点成功", null, null);
+        } else {
+            return ResultUtil.resultFail("删改景点失败", null, null);
         }
     }
 }
