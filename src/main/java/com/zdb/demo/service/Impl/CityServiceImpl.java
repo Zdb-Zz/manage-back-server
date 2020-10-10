@@ -25,9 +25,16 @@ public class CityServiceImpl implements CityService {
     public Page<City> getCityList(Integer pageIndex, Integer pageSize,String city,String name, String scenicSpot) {
         CityExample cityExample = new CityExample();
         CityExample.Criteria criteria = cityExample.createCriteria();
-        criteria.andCityLike(city);
-        criteria.andNameLike(name);
-        criteria.andScenicSpotLike(scenicSpot);
+        if (!city.equals("")){
+            criteria.andCityLike(city);
+        }
+        if (!name.equals("")){
+            criteria.andNameLike(name);
+        }
+        if (!scenicSpot.equals("")){
+           criteria.andScenicSpotLike(scenicSpot);
+        }
+
         PageHelper.startPage(pageIndex,pageSize);
         Page<City> cities = (Page<City>) cityMapper.selectByExample(cityExample);
         return cities;

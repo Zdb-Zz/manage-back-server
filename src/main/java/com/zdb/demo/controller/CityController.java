@@ -22,7 +22,7 @@ public class CityController {
     @Resource
     CityService cityService;
 
-    @GetMapping("getCityList")
+    @GetMapping("/getCityList")
     public Map<String, Object> getCityList(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
                                            @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
                                            @RequestParam(value = "city", required = false) String city,

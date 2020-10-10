@@ -317,7 +317,7 @@ public class CityExample {
         }
 
         public Criteria andNameLike(String value) {
-            addCriterion("Name like", "%"+ value+"%", "name");
+            addCriterion("Name like", "%" + value + "%", "name");
             return (Criteria) this;
         }
 
@@ -387,7 +387,7 @@ public class CityExample {
         }
 
         public Criteria andCityLike(String value) {
-            addCriterion("City like","%"+ value+"%", "city");
+            addCriterion("City like", "%" + value + "%", "city");
             return (Criteria) this;
         }
 
@@ -413,6 +413,76 @@ public class CityExample {
 
         public Criteria andCityNotBetween(String value1, String value2) {
             addCriterion("City not between", value1, value2, "city");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleIsNull() {
+            addCriterion("subtitle is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleIsNotNull() {
+            addCriterion("subtitle is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleEqualTo(String value) {
+            addCriterion("subtitle =", value, "subtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleNotEqualTo(String value) {
+            addCriterion("subtitle <>", value, "subtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleGreaterThan(String value) {
+            addCriterion("subtitle >", value, "subtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleGreaterThanOrEqualTo(String value) {
+            addCriterion("subtitle >=", value, "subtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleLessThan(String value) {
+            addCriterion("subtitle <", value, "subtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleLessThanOrEqualTo(String value) {
+            addCriterion("subtitle <=", value, "subtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleLike(String value) {
+            addCriterion("subtitle like", value, "subtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleNotLike(String value) {
+            addCriterion("subtitle not like", value, "subtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleIn(List<String> values) {
+            addCriterion("subtitle in", values, "subtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleNotIn(List<String> values) {
+            addCriterion("subtitle not in", values, "subtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleBetween(String value1, String value2) {
+            addCriterion("subtitle between", value1, value2, "subtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubtitleNotBetween(String value1, String value2) {
+            addCriterion("subtitle not between", value1, value2, "subtitle");
             return (Criteria) this;
         }
 
@@ -457,7 +527,7 @@ public class CityExample {
         }
 
         public Criteria andScenicSpotLike(String value) {
-            addCriterion("Scenic_Spot like", "%"+ value+"%", "scenicSpot");
+            addCriterion("Scenic_Spot like", "%" + value + "%", "scenicSpot");
             return (Criteria) this;
         }
 
@@ -673,76 +743,6 @@ public class CityExample {
 
         public Criteria andImgviewNotBetween(String value1, String value2) {
             addCriterion("imgView not between", value1, value2, "imgview");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleIsNull() {
-            addCriterion("title is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleIsNotNull() {
-            addCriterion("title is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleEqualTo(String value) {
-            addCriterion("title =", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleNotEqualTo(String value) {
-            addCriterion("title <>", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleGreaterThan(String value) {
-            addCriterion("title >", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleGreaterThanOrEqualTo(String value) {
-            addCriterion("title >=", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleLessThan(String value) {
-            addCriterion("title <", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleLessThanOrEqualTo(String value) {
-            addCriterion("title <=", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleLike(String value) {
-            addCriterion("title like", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleNotLike(String value) {
-            addCriterion("title not like", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleIn(List<String> values) {
-            addCriterion("title in", values, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleNotIn(List<String> values) {
-            addCriterion("title not in", values, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleBetween(String value1, String value2) {
-            addCriterion("title between", value1, value2, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleNotBetween(String value1, String value2) {
-            addCriterion("title not between", value1, value2, "title");
             return (Criteria) this;
         }
 
@@ -1513,6 +1513,136 @@ public class CityExample {
 
         public Criteria andImg3NotBetween(String value1, String value2) {
             addCriterion("img3 not between", value1, value2, "img3");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationIsNull() {
+            addCriterion("classification is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationIsNotNull() {
+            addCriterion("classification is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationEqualTo(String value) {
+            addCriterion("classification =", value, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationNotEqualTo(String value) {
+            addCriterion("classification <>", value, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationGreaterThan(String value) {
+            addCriterion("classification >", value, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationGreaterThanOrEqualTo(String value) {
+            addCriterion("classification >=", value, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationLessThan(String value) {
+            addCriterion("classification <", value, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationLessThanOrEqualTo(String value) {
+            addCriterion("classification <=", value, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationLike(String value) {
+            addCriterion("classification like", value, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationNotLike(String value) {
+            addCriterion("classification not like", value, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationIn(List<String> values) {
+            addCriterion("classification in", values, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationNotIn(List<String> values) {
+            addCriterion("classification not in", values, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationBetween(String value1, String value2) {
+            addCriterion("classification between", value1, value2, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassificationNotBetween(String value1, String value2) {
+            addCriterion("classification not between", value1, value2, "classification");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarIsNull() {
+            addCriterion("star is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarIsNotNull() {
+            addCriterion("star is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarEqualTo(Float value) {
+            addCriterion("star =", value, "star");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarNotEqualTo(Float value) {
+            addCriterion("star <>", value, "star");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarGreaterThan(Float value) {
+            addCriterion("star >", value, "star");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarGreaterThanOrEqualTo(Float value) {
+            addCriterion("star >=", value, "star");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarLessThan(Float value) {
+            addCriterion("star <", value, "star");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarLessThanOrEqualTo(Float value) {
+            addCriterion("star <=", value, "star");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarIn(List<Float> values) {
+            addCriterion("star in", values, "star");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarNotIn(List<Float> values) {
+            addCriterion("star not in", values, "star");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarBetween(Float value1, Float value2) {
+            addCriterion("star between", value1, value2, "star");
+            return (Criteria) this;
+        }
+
+        public Criteria andStarNotBetween(Float value1, Float value2) {
+            addCriterion("star not between", value1, value2, "star");
             return (Criteria) this;
         }
     }
