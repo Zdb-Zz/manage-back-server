@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service("travelService")
@@ -54,7 +55,9 @@ public class TravelServiceImpl implements TravelService {
         Page<Travels> travels = (Page<Travels>) travelsMapper.selectByExample(travelsExample);
         for (Travels travel : travels) {
             travel.setUserName(userMapper.selectByPrimaryKey(travel.getUserId()).getUsername());
+            travel.setImgList(Arrays.asList(travel.getShowuserimg().split(",")));
         }
+
         return travels;
     }
 
